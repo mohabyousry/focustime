@@ -5,12 +5,12 @@ import {
   StyleSheet,
   Platform,
   StatusBar,
-} from 'react-native';
-import { colors } from './src/utils/colors';
-import React, { useState } from 'react';
-import { Focus } from './src/Focus';
-import {Timer} from './src/Timer'
-import{FocusHistory} from './src/FocusHistory'
+} from "react-native";
+import { colors } from "./src/utils/colors";
+import React, { useState } from "react";
+import { Focus } from "./src/Focus";
+import { Timer } from "./src/Timer";
+import { FocusHistory } from "./src/FocusHistory";
 // import Constants from 'expo-constants';
 
 export default function App() {
@@ -20,18 +20,19 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       {!currentSubject ? (
         <>
-        <Focus addSubject = {setCurrentSubject} />
-        <FocusHistory history = {history}/>
+          <Focus addSubject={setCurrentSubject} />
+          <FocusHistory history={history} />
         </>
       ) : (
         <Timer
-          focusSubject = {currentSubject}
+          focusSubject={currentSubject}
           onTimerEnd={(subject) => {
-            setHistory([...history, subject])
-            }}
-          clearSubject = {() => {setCurrentSubject(null)}}
+            setHistory([...history, subject]);
+          }}
+          clearSubject={() => {
+            setCurrentSubject(null);
+          }}
         />
-        
       )}
     </SafeAreaView>
   );
@@ -40,7 +41,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     backgroundColor: colors.darkBlue,
   },
 });
